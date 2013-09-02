@@ -21,8 +21,8 @@ class User < ActiveRecord::Base
   end
 
   def self.page(page_num )
-     return self.limit(50).offset(50 * (page_num  - 1)) if page_num  > 0
-     return self.limit(50)
+     return self.limit(1000).offset(1000 * (page_num  - 1)) if page_num  > 0
+     return self.limit(1000)
   end
 
   def total_karma

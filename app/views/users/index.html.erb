@@ -10,3 +10,13 @@
     <%= render 'user_row', :user => user %>
   <% end %>
 </table>
+
+<div class="pagination">
+  <ul>
+    <li ><a  href="/?page=<%= @page_num - 1%>">&laquo;</a></li>
+    <% @num_pages.times do |pg| %>
+      <li><a href="/?page=<%= pg + 1 %>"><%= pg + 1 %></a></li>
+    <% end %>
+    <li><a href="/?page=<%= @page_num + 1 %>">&raquo;</a></li>
+  </ul>
+</div>
