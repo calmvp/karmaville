@@ -20,8 +20,9 @@ class User < ActiveRecord::Base
     self.order('karma_points_sum DESC')
   end
 
-  def self.page(pg)
-     self.limit(50).offset(pg * 50)
+  def self.page(page_num )
+     return self.limit(50).offset(50 * (page_num  - 1)) if page_num  > 0
+     return self.limit(50)
   end
 
   def total_karma
