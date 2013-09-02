@@ -17,11 +17,11 @@ class User < ActiveRecord::Base
 
 
   def self.by_karma
-    joins(:karma_points).group('users.id').order('SUM(karma_points.value) DESC')
+    self.order('karma_points_sum DESC')
   end
 
-  def self.top_karma_users
-    self.order('karma_points_sum DESC').limit(50)
+  def self.page(pg)
+     self.limit(50).offset(pg * 50)
   end
 
   def total_karma
@@ -31,5 +31,4 @@ class User < ActiveRecord::Base
   def full_name
     "#{first_name} #{last_name}"
   end
-
 end
