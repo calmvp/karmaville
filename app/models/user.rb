@@ -28,11 +28,6 @@ class User < ActiveRecord::Base
     self.karma_points.sum(:value)
   end
 
-  def populate_karma_points_col
-    self.karma_points_sum = total_karma
-    self.save
-  end
-
   def full_name
     "#{first_name} #{last_name}"
   end
